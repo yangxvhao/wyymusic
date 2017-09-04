@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.CommentMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.Comment">
+<mapper namespace="com.example.wangyiyun.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.example.wangyiyun.model.Comment">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="song_id" jdbcType="VARCHAR" property="songId" />
     <result column="comments" jdbcType="VARCHAR" property="comments" />
@@ -24,7 +24,7 @@
     delete from comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.Comment">
+  <insert id="insert" parameterType="com.example.wangyiyun.model.Comment">
     insert into comment (id, song_id, comments, 
       create_time, nick_name, user_url, 
       avatar_url, liked_count)
@@ -43,7 +43,7 @@
         #{item.avatarUrl,jdbcType=VARCHAR},#{item.likedCount,jdbcType=INTEGER})
       </foreach>
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.Comment">
+  <insert id="insertSelective" parameterType="com.example.wangyiyun.model.Comment">
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -98,7 +98,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Comment">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.wangyiyun.model.Comment">
     update comment
     <set>
       <if test="songId != null">
@@ -125,7 +125,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Comment">
+  <update id="updateByPrimaryKey" parameterType="com.example.wangyiyun.model.Comment">
     update comment
     set song_id = #{songId,jdbcType=INTEGER},
       comments = #{comments,jdbcType=VARCHAR},

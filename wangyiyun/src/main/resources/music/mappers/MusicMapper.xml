@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.MusicMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.model.Music">
+<mapper namespace="com.example.wangyiyun.dao.MusicMapper">
+  <resultMap id="BaseResultMap" type="com.example.wangyiyun.model.Music">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="song_id" jdbcType="VARCHAR" property="songId" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -23,7 +23,7 @@
     delete from music
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.model.Music">
+  <insert id="insert" parameterType="com.example.wangyiyun.model.Music">
     insert into music (song_id, title,
       author, album, song_url, 
       comment_count)
@@ -40,7 +40,7 @@
        #{item.commentCount,jdbcType=INTEGER})
       </foreach>
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.model.Music">
+  <insert id="insertSelective" parameterType="com.example.wangyiyun.model.Music">
     insert into music
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -89,7 +89,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Music">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.wangyiyun.model.Music">
     update music
     <set>
       <if test="songId != null">
@@ -113,7 +113,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Music">
+  <update id="updateByPrimaryKey" parameterType="com.example.wangyiyun.model.Music">
     update music
     set song_id = #{songId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
