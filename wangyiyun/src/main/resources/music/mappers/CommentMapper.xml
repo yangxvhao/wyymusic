@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="song_id" jdbcType="VARCHAR" property="songId" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="user_url" jdbcType="VARCHAR" property="userUrl" />
+    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="liked_count" jdbcType="INTEGER" property="likedCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id song_id, comments, create_time, nick_name, user_url, avatar_url, liked_count
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.Comment">
+    insert into comment (id, song_id, comments, 
+      create_time, nick_name, user_url, 
+      avatar_url, liked_count)
+    values (#{id,jdbcType=INTEGER}, #{songId,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{nickName,jdbcType=VARCHAR}, #{userUrl,jdbcType=VARCHAR}, 
+      #{avatarUrl,jdbcType=VARCHAR}, #{likedCount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertBatch" parameterType="List">
+    insert into comment (song_id, comments,
+      create_time, nick_name, user_url, 
+      avatar_url, liked_count)
+    VALUES
+      <foreach collection="list" item="item" index="index" separator=",">
+        (#{item.songId,jdbcType=VARCHAR},#{item.comments,jdbcType=VARCHAR},#{item.createTime,jdbcType=VARCHAR},
+        #{item.nickName,jdbcType=VARCHAR},#{item.userUrl,jdbcType=VARCHAR},
+        #{item.avatarUrl,jdbcType=VARCHAR},#{item.likedCount,jdbcType=INTEGER})
+      </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="songId != null">
+        song_id,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="userUrl != null">
+        user_url,
+      </if>
+      <if test="avatarUrl != null">
+        avatar_url,
+      </if>
+      <if test="likedCount != null">
+        liked_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="songId != null">
+        #{songId,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userUrl != null">
+        #{userUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="likedCount != null">
+        #{likedCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Comment">
+    update comment
+    <set>
+      <if test="songId != null">
+        song_id = #{songId,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userUrl != null">
+        user_url = #{userUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="likedCount != null">
+        liked_count = #{likedCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Comment">
+    update comment
+    set song_id = #{songId,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      user_url = #{userUrl,jdbcType=VARCHAR},
+      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      liked_count = #{likedCount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,18 @@
+CREATE TABLE demo.comment
+(
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  song_id VARCHAR(20),
+  comments VARCHAR(200),
+  create_time TIMESTAMP,
+  nick_name VARCHAR(100),
+  user_url VARCHAR(100),
+  avatar_url VARCHAR(100),
+  liked_count INTEGER
+);
+//展示表的信息，包含编码等
+show CREATE TABLE comment;
+
+//修改数据库编码
+alter databases/table 数据库名/表名 chrarcter set utf8
+//创建时指定编码
+create database/table 数据库名/表名 character set utf8;
