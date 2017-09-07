@@ -72,6 +72,7 @@ public class DefaultEventTemplate implements EventTemplate {
 		EventMessage msg = new EventMessage(queueName, exchangeName,
 				eventContentBytes);
 		try {
+			logger.info("push queue :" + msg.toString());
 			eventAmqpTemplate.convertAndSend(exchangeName, queueName, msg);
 		} catch (AmqpException e) {
 			logger.error("send event fail. Event Message : [" + eventContent + "]", e);

@@ -51,6 +51,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+			<version>5.1.40</version>
 		</dependency>
 		<!--指定tomcat,不用spring boot内部tomcat-->
 		<!--<dependency>-->
@@ -73,11 +74,6 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.29</version>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin -->
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>
@@ -94,18 +90,22 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
-		<dependency>
-			<groupId>com.rabbitmq</groupId>
-			<artifactId>amqp-client</artifactId>
-			<version>4.1.0</version>
-		</dependency>
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/com.rabbitmq/amqp-client &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>com.rabbitmq</groupId>-->
+			<!--<artifactId>amqp-client</artifactId>-->
+			<!--<version>4.1.0</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>me.poplaris</groupId>
 			<artifactId>rabbitmq</artifactId>
 			<version>1.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>14.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

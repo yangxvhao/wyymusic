@@ -53,6 +53,8 @@ public class MessageAdapterHandler {
 		} catch (IOException e) {
 			logger.error("Event content can not be Deserialized, check the provided CodecFactory.",e);
 			return;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -84,7 +86,7 @@ public class MessageAdapterHandler {
 			this.eep = eep;
 		}
 
-		public void process(byte[] eventData) throws IOException{
+		public void process(byte[] eventData) throws Exception {
 			Object obj = codecFactory.deSerialize(eventData);
 			eep.process(obj);
 		}

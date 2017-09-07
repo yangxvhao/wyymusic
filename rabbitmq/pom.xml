@@ -34,20 +34,20 @@
         </dependency>
 
         <!-- for rabbitmq -->
-        <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>2.8.2</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.rabbitmq</groupId>-->
+            <!--<artifactId>amqp-client</artifactId>-->
+            <!--<version>2.8.2</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-amqp</artifactId>
-            <version>1.1.1.RELEASE</version>
+            <version>1.7.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
-            <version>1.1.1.RELEASE</version>
+            <version>1.7.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>com.caucho</groupId>

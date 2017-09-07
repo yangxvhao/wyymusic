@@ -37,12 +37,12 @@ public class EventControlConfig {
 	/**
 	 * 事件消息处理线程数，默认是 CPU核数 * 2
 	 */
-	private int eventMsgProcessNum;
+	private int eventMsgProcessNum =1;
 	
 	/**
 	 * 每次消费消息的预取值
 	 */
-	private int prefetchSize;
+	private int prefetchSize =1;
 	
 	public EventControlConfig(String serverHost) {
 		this(serverHost,DEFAULT_PORT,DEFAULT_USERNAME,DEFAULT_PASSWORD,null,0,DEFAULT_PROCESS_THREAD_NUM,DEFAULT_PROCESS_THREAD_NUM,new HessionCodecFactory());

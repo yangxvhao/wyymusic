@@ -1,11 +1,10 @@
 package com.example.wangyiyun.dao;
 
 import com.example.wangyiyun.model.Comment;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
+//@Mapper
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer id);
 

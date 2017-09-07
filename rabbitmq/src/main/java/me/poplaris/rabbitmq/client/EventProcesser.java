@@ -5,5 +5,5 @@ package me.poplaris.rabbitmq.client;
  * Date: 14-7-4 下午5:59
  */
 public interface EventProcesser {
-	public void process(Object e);
+	public void process(Object e) throws Exception;
 }

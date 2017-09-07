@@ -4,11 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
+import com.example.wangyiyun.ProducerSpider;
 import com.example.wangyiyun.model.Comment;
 import com.example.wangyiyun.model.Music;
 import com.example.wangyiyun.pipeline.NetEaseMusicPipeline;
 import com.example.wangyiyun.util.Common;
+import com.example.wangyiyun.util.EventControllerUtil;
 import lombok.extern.slf4j.Slf4j;
+import me.poplaris.rabbitmq.client.EventController;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -30,6 +33,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -88,6 +92,28 @@ public class WangyiMusicPageProcessor implements PageProcessor {
             music.setCommentCount(commentCount);
             page.putField("music",music);
         }
+    }
+
+    public static void main(String[] args) {
+
+        List<Request> requests = new ArrayList<>();
+        requests.add(new Request(START_URL));
+
+        EventController eventController = EventControllerUtil.getInstance();
+
+        ProducerSpider spider = new ProducerSpider(new WangyiMusicPageProcessor(),requests,eventController);
+
+        spider.setPipelines(Arrays.asList(new NetEaseMusicPipeline()));
+
+        eventController.add(EventControllerUtil.defaultQueue,EventControllerUtil.defaultExchange,spider);
+        eventController.start();
+        try {
+            spider.push(new Request(START_URL));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public static void start(WangyiMusicPageProcessor processor,NetEaseMusicPipeline pipeline) {
