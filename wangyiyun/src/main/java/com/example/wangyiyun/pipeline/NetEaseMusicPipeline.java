@@ -34,7 +34,7 @@ public class NetEaseMusicPipeline implements Pipeline {
 		for (Map.Entry<String, Object> entry : resultItems.getAll().entrySet()) {
 			if (entry.getKey().equals("music")) {
 				Music music = (Music) entry.getValue();
-				mMusicDao.insertMusic(music);
+//				mMusicDao.insertMusic(music);
 
 			} else {
 				List<Comment> comment = (List<Comment>) entry.getValue();
