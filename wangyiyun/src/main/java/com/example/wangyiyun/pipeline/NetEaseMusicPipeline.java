@@ -3,15 +3,11 @@ package com.example.wangyiyun.pipeline;
 import com.example.wangyiyun.model.Comment;
 import com.example.wangyiyun.model.Music;
 import com.example.wangyiyun.service.CommentService;
-import com.example.wangyiyun.service.MusicService;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
-
 
 import java.util.List;
 import java.util.Map;
@@ -22,8 +18,8 @@ import java.util.Map;
 @Component
 public class NetEaseMusicPipeline implements Pipeline {
 
-	@Autowired(required = false)
-	public MusicService mMusicDao;
+//	@Autowired(required = false)
+//	public MusicService mMusicDao;
 
 	@Autowired
 	public CommentService mCommentDao;
