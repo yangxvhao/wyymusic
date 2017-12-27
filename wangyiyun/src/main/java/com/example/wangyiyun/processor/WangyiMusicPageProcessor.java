@@ -212,7 +212,7 @@ public class WangyiMusicPageProcessor implements PageProcessor {
         try {
             // 参数加密
             // 16位随机字符串，直接FFF
-            // String secKey = new BigInteger(100, new SecureRandom()).toString(32).substring(0, 16);
+//             String secKey = new BigInteger(100, new SecureRandom()).toString(32).substring(0, 16);
             String secKey = "FFFFFFFFFFFFFFFF";
             // 两遍ASE加密
             String encText = Common.aesEncrypt(Common.aesEncrypt(first_param, "0CoJUm6Qyw8W8jud"), secKey);
@@ -220,6 +220,7 @@ public class WangyiMusicPageProcessor implements PageProcessor {
             //http://music.163.com/weapi/v1/resource/comments/R_SO_4_470573623?csrf_token=
             HttpPost httpPost = new HttpPost("http://music.163.com/weapi/v1/resource/comments/R_SO_4_" + songId + "/?csrf_token=");
             httpPost.addHeader("Referer", BASE_URL);
+            httpPost.addHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36");
             RequestConfig config = RequestConfig.custom().setConnectTimeout(TIME_OUT)
                     .setConnectionRequestTimeout(TIME_OUT)
                     .setSocketTimeout(TIME_OUT)

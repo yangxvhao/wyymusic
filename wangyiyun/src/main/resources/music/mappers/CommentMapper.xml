@@ -38,7 +38,7 @@
       avatar_url, liked_count)
     VALUES
       <foreach collection="list" item="item" index="index" separator=",">
-        (#{item.songId,jdbcType=VARCHAR},#{item.comments,jdbcType=VARCHAR},#{item.createTime,jdbcType=VARCHAR},
+        (#{item.songId,jdbcType=VARCHAR},#{item.comments,jdbcType=VARCHAR},#{item.createTime,jdbcType=TIMESTAMP},
         #{item.nickName,jdbcType=VARCHAR},#{item.userUrl,jdbcType=VARCHAR},
         #{item.avatarUrl,jdbcType=VARCHAR},#{item.likedCount,jdbcType=INTEGER})
       </foreach>

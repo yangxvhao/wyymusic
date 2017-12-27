@@ -109,9 +109,9 @@ public class Common {
      */
     public static String filterEmoji(String source) {
         if(StringUtils.isNotBlank(source)){
-            return source.replaceAll("[\\ud800\\udc00-\\udbff\\udfff\\ud800-\\udfff]", "*");
+            return source.replaceAll("[\\ud800\\udc00-\\udbff\\udfff\\ud800-\\udfff]", "*").trim();
         }else{
-            return source;
+            return source.trim();
         }
     }
 
