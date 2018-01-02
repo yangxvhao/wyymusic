@@ -1,8 +1,17 @@
 package com.yangxvhao.proxy.product.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.yangxvhao.proxy.model.HttpProxy;
 import com.yangxvhao.proxy.product.AbstractProduct;
+import com.yangxvhao.proxy.until.DateUtils;
+import com.yangxvhao.proxy.until.FileUtil;
+import com.yangxvhao.proxy.until.HttpDownload;
+import org.springframework.beans.factory.annotation.Value;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,8 +20,40 @@ import java.util.List;
  */
 
 public class MiPuProxy extends AbstractProduct {
+
+    @Value("${proxy.mipu.url}")
+    private static String url;
+
     @Override
     public List<HttpProxy> doWork() {
-        return null;
+        String todayTime = DateUtils.getTime();
+        String path = Thread.currentThread().getContextClassLoader().getResource("proxy/" + todayTime +".json").getPath();
+        return doWork(path);
+    }
+
+    private List<HttpProxy> doWork(String path){
+        List<HttpProxy> proxyList = new ArrayList<>();
+        String result;
+        File file = new File(path);
+
+        if(file.exists()){
+            result = FileUtil.read2Stirng(path);
+        }else {
+            result = HttpDownload.getInstance().httpGet(url);
+        }
+        JSONObject jsonObject = JSON.parseObject(result);
+        JSONArray jsonArray = jsonObject.getJSONArray("result");
+
+        for (Object object : jsonArray) {
+            HttpProxy httpProxy = new HttpProxy();
+            JSONObject proxyJson = (JSONObject) object;
+            String ip = proxyJson.getString("ip:port").split(":")[0];
+            String port = proxyJson.getString("ip:port").split(":")[1];
+            httpProxy.setHost(ip);
+            httpProxy.setPort(port);
+            proxyList.add(httpProxy);
+        }
+
+        return proxyList;
     }
 }

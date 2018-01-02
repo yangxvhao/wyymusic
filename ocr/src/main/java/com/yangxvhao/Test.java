@@ -12,7 +12,7 @@ import java.io.File;
 
 public class Test {
     public static void main(String[] args) {
-        File file = new File("/home/yangxvhao/yangxh/picture/ygrandimg.jpg");
+        File file = new File("/home/yangxvhao/yangxh/picture/1514877621940.jpg");
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath("/home/yangxvhao/tessdata");
         try {
