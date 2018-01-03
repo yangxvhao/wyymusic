@@ -8,7 +8,9 @@ import com.yangxvhao.proxy.product.AbstractProduct;
 import com.yangxvhao.proxy.until.DateUtils;
 import com.yangxvhao.proxy.until.FileUtil;
 import com.yangxvhao.proxy.until.HttpDownload;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,16 +20,29 @@ import java.util.List;
  * @author yangxvhao
  * @date 17-12-29.
  */
-
+@Component
+@Configurable
 public class MiPuProxy extends AbstractProduct {
 
     @Value("${proxy.mipu.url}")
-    private static String url;
+    private String url;
 
     @Override
     public List<HttpProxy> doWork() {
         String todayTime = DateUtils.getTime();
-        String path = Thread.currentThread().getContextClassLoader().getResource("proxy/" + todayTime +".json").getPath();
+        String path;
+
+        /**
+         * /home/yangxvhao/IdeaProjects/wyymusic/proxy-pool/src/main/resources/proxy/20180102.json
+         */
+        try {
+            path = System.getProperty("user.dir") + "/proxy-pool/src/main/resources/proxy/" + todayTime + ".json";
+//            path = Thread.currentThread().getContextClassLoader().getResource("proxy/" + todayTime +".json").getPath();
+        }catch (Exception e){
+            throw e;
+        }
+
+
         return doWork(path);
     }
 

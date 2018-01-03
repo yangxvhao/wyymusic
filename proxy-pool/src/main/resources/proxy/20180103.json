@@ -1,0 +1,85 @@
+{
+  "url": "http://proxy.mimvp.com",
+  "result": [
+    {
+      "ip:port": "103.9.134.114:1080",
+      "http_type": "Socks4"
+    },
+    {
+      "ip:port": "200.165.208.42:8080",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "125.164.240.209:8080",
+      "http_type": "HTTPS"
+    },
+    {
+      "ip:port": "190.0.22.10:3128",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "110.77.177.176:44311",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "122.72.18.35:80",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "192.140.83.208:3128",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "116.199.115.78:81",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "197.211.27.234:8080",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "186.46.215.131:53281",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "60.177.225.111:808",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "188.193.21.161:80",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "116.199.115.79:80",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "122.72.18.61:80",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "202.158.20.187:8091",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "187.20.97.68:55555",
+      "http_type": "HTTP/HTTPS"
+    },
+    {
+      "ip:port": "39.134.161.14:80",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "103.10.169.100:3128",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "116.199.115.78:80",
+      "http_type": "HTTP"
+    },
+    {
+      "ip:port": "119.49.144.83:80",
+      "http_type": "HTTP"
+    }
+  ]
+}

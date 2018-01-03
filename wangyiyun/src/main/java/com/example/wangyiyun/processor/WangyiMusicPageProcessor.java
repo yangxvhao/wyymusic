@@ -13,6 +13,7 @@ import com.example.wangyiyun.util.EventControllerUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.poplaris.rabbitmq.client.EventController;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
@@ -215,6 +216,7 @@ public class WangyiMusicPageProcessor implements PageProcessor {
 //             String secKey = new BigInteger(100, new SecureRandom()).toString(32).substring(0, 16);
             String secKey = "FFFFFFFFFFFFFFFF";
             // 两遍ASE加密
+            HttpHost httpHost = new HttpHost("200.165.208.42", 8080);
             String encText = Common.aesEncrypt(Common.aesEncrypt(first_param, "0CoJUm6Qyw8W8jud"), secKey);
             String encSecKey = Common.rsaEncrypt();
             //http://music.163.com/weapi/v1/resource/comments/R_SO_4_470573623?csrf_token=
@@ -224,6 +226,7 @@ public class WangyiMusicPageProcessor implements PageProcessor {
             RequestConfig config = RequestConfig.custom().setConnectTimeout(TIME_OUT)
                     .setConnectionRequestTimeout(TIME_OUT)
                     .setSocketTimeout(TIME_OUT)
+                    .setProxy(httpHost)
                     .build()
                     ;
             httpPost.setConfig(config);
