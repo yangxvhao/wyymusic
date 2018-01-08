@@ -12,6 +12,23 @@ CREATE TABLE comment
 )
   ENGINE = InnoDB
   CHARSET = utf8;
+
+CREATE TABLE music
+(
+  id            INT AUTO_INCREMENT
+    PRIMARY KEY,
+  song_id       VARCHAR(20)  NOT NULL,
+  title         VARCHAR(50)  NULL
+  COMMENT '歌曲名称',
+  author        VARCHAR(50)  NULL
+  COMMENT '歌手',
+  song_url      VARCHAR(100) NULL
+  COMMENT '歌曲地址',
+  comment_count INT          NULL
+  COMMENT '评论总数'
+)
+  ENGINE = InnoDB
+  CHARSET = utf8;
 //展示表的信息，包含编码等
 show CREATE TABLE comment;
 

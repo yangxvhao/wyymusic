@@ -109,11 +109,12 @@ public class Common {
      */
     public static String filterEmoji(String source) {
         if(StringUtils.isNotBlank(source)){
-            return source.replaceAll("[\\ud800\\udc00-\\udbff\\udfff\\ud800-\\udfff]", "*").trim();
+            return source.replaceAll("[\\ud800\\udc00-\\udbff\\udfff\\ud800-\\udfff]", "*").trim().replaceAll("\n|\t|\r","");
         }else{
             return source.trim();
         }
     }
+
 
     /**
      * 将时间戳转为date类型

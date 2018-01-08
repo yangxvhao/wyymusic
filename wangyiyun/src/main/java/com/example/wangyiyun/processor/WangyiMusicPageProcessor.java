@@ -226,7 +226,7 @@ public class WangyiMusicPageProcessor implements PageProcessor {
             RequestConfig config = RequestConfig.custom().setConnectTimeout(TIME_OUT)
                     .setConnectionRequestTimeout(TIME_OUT)
                     .setSocketTimeout(TIME_OUT)
-                    .setProxy(httpHost)
+//                    .setProxy(httpHost)
                     .build()
                     ;
             httpPost.setConfig(config);
